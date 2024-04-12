@@ -13,27 +13,21 @@ string[,] external =
 
 string externalDomain = "hayworth.com";
 
-string name = "";
-string surname = "";
-
-void EmailAdress(string[,] corporate, int i)
-{
-    for (var j = 0; j < 2; j++)
-    {
-        name = corporate[i, 0];
-        surname = corporate[i, 1];
-    }
-    string shortName = name.Substring(0, 2);
-    Console.WriteLine(shortName);
-}
-
 for (int i = 0; i < corporate.GetLength(0); i++)
 {
     // display internal email addresses
-    EmailAdress(corporate, i);
+    EmailAdress(first: corporate[i, 0], last: corporate[i, 1]);
 }
 
 for (int i = 0; i < external.GetLength(0); i++)
 {
     // display external email addresses
+    EmailAdress(first: external[i, 0], last: external[i, 1], domain: externalDomain);
+}
+
+void EmailAdress(string first, string last, string domain = "contoso.com")
+{
+    string email = first.Substring(0, 2) + last;
+    email = email.ToLower();
+    Console.WriteLine($"{email}@{domain}");
 }
