@@ -13,9 +13,24 @@ string[,] external =
 
 string externalDomain = "hayworth.com";
 
+string name = "";
+string surname = "";
+
+void EmailAdress(string[,] corporate, int i)
+{
+    for (var j = 0; j < 2; j++)
+    {
+        name = corporate[i, 0];
+        surname = corporate[i, 1];
+    }
+    string shortName = name.Substring(0, 2);
+    Console.WriteLine(shortName);
+}
+
 for (int i = 0; i < corporate.GetLength(0); i++)
 {
     // display internal email addresses
+    EmailAdress(corporate, i);
 }
 
 for (int i = 0; i < external.GetLength(0); i++)
